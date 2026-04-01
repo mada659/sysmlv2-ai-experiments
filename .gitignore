@@ -1,0 +1,16 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.claude/
+.env
+sysmlv2/
+sysmlv2_api/
+example_sysml_notebooks/
+example_sysml_files/
