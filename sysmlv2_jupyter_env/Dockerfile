@@ -24,16 +24,7 @@ RUN wget https://raw.githubusercontent.com/Systems-Modeling/SysML-v2-Release/ref
 RUN chmod +x /mbse/install.sh && \
 bash -x /mbse/install.sh
  
-# OPT 1) Copy the entire SysMLv2 repo multiple GBs
-# RUN git clone https://github.com/Systems-Modeling/SysML-v2-Release.git ./sysmlv2
-# RUN chmod +x /mbse/install/jupyter/install.sh && \
-# bash -x /mbse/install/jupyter/install.sh
- 
-# Add additional python libraries (using mamba). Or don't... just keep this env for SysMLv2 rendering
-# RUN mamba install -y \
-#     && mamba clean -afy
- 
 EXPOSE 8888
  
-# Set default command to launch Jupyter Lab
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--notebook-dir=/mbse"]
+# Set default command to launch Jupyter Lab with password from JUPYTER_PASSWORD env var
+CMD ["sh", "-c", "jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --notebook-dir=/mbse --PasswordIdentityProvider.hashed_password=\"$(python3 -c \"from jupyter_server.auth import passwd; import os; print(passwd(os.environ['JUPYTER_PASSWORD']))\")\""]

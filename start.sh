@@ -19,5 +19,6 @@ cd sysmlv2 && git pull && cd ..
 cd example_sysml_notebooks && git pull && cd ..
 cd example_sysml_files && git pull && cd ..
 
-# Start containers
-docker compose up
+# Start containers. The --build flag ensures that any changes to the Dockerfiles are picked up and the images are rebuilt. 
+#The -d flag runs the containers in detached mode, allowing the script to exit while the containers continue running in the background.
+docker compose up --build -d

@@ -40,6 +40,13 @@ services:
     container_name: sysmlv2-jupyter
     ports:
       - "8888:8888"
+    environment:
+      JUPYTER_PASSWORD: ${JUPYTER_PASSWORD}
+    volumes:
+    # Bind mount this entire directory to the Jupyter container so that changes to files are registere locally.
+    # Note that significant changes to files from other Git repos pulled may cause sync issues when those repos
+    # are updated, so we may want to consider bind mounting only specific subdirectories in the future.
+      - .:/mbse
 
 volumes:
   postgres_data:
