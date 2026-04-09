@@ -25,6 +25,12 @@ RUN sed -i \
     's|jdbc:postgresql://localhost:5432/sysml2|jdbc:postgresql://postgres:5432/sysmlv2|g' \
     /app/conf/META-INF/persistence.xml
 
+# Change Hibernate DDL mode from 'create-drop' (wipes DB on every start/stop)
+# to 'update' (creates tables on first run, preserves data across restarts)
+RUN sed -i \
+    's|value="create-drop"|value="update"|g' \
+    /app/conf/META-INF/persistence.xml
+
 # Entrypoint injects POSTGRES_PASSWORD and PLAY_SECRET at runtime
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
