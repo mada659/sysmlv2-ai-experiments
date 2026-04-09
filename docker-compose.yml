@@ -25,6 +25,7 @@ services:
     container_name: sysmlv2-api
     ports:
       - "9000:9000"
+      - "8888:8888"  # Expose the Jupyter port for direct access if needed
     depends_on:
       postgres:
         condition: service_healthy
@@ -38,8 +39,9 @@ services:
     build:
       context: ./sysmlv2_jupyter_env
     container_name: sysmlv2-jupyter
-    ports:
-      - "8888:8888"
+    network_mode: "service:sysml-api"  # Use the same network as the sysml-api service to allow direct communication
+    # ports:
+    #   - "8888:8888"
     environment:
       JUPYTER_PASSWORD: ${JUPYTER_PASSWORD}
     volumes:
