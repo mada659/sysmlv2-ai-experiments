@@ -12,6 +12,7 @@ wheels/
 .venv
 .claude/
 .env
+*.py
 
 sysmlv2/
 example_sysml_notebooks/
