@@ -23,6 +23,8 @@ RUN wget https://raw.githubusercontent.com/Systems-Modeling/SysML-v2-Release/ref
 RUN wget https://raw.githubusercontent.com/Systems-Modeling/SysML-v2-Release/refs/heads/master/install/jupyter/install.py
 RUN chmod +x /mbse/install.sh && \
 bash -x /mbse/install.sh
+
+RUN conda install -y pandas matplotlib pydantic networkx numpy
  
 EXPOSE 8888
  

@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "ipykernel>=7.2.0",
     "lancedb>=0.30.2",
     "langchain>=1.2.14",
     "networkx>=3.6.1",
@@ -12,4 +13,5 @@ dependencies = [
     "openai>=2.30.0",
     "pandas>=3.0.2",
     "polars>=1.39.3",
+    "pydantic>=2.12.5",
 ]

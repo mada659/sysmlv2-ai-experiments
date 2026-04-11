@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="220px" preserveAspectRatio="none" style="width:191px;height:220px;background:#FFFFFF;" version="1.1" viewBox="0 0 191 220" width="191px" zoomAndPan="magnify"><defs/><g><!--MD5=[fbc87193dbaf4d95561dea2c320d4a47]
+cluster E1--><g id="cluster_E1"><a href="psysml:ec8fe270-cf80-4851-8284-78143de8c30e" target="_top" title="psysml:ec8fe270-cf80-4851-8284-78143de8c30e" xlink:actuate="onRequest" xlink:href="psysml:ec8fe270-cf80-4851-8284-78143de8c30e" xlink:show="new" xlink:title="psysml:ec8fe270-cf80-4851-8284-78143de8c30e" xlink:type="simple"><polygon fill="none" points="16,6,83,6,90,28.2969,174,28.2969,174,213,16,213,16,6" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="16" x2="90" y1="28.2969" y2="28.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="61" x="20" y="20.9951">MyPkg2</text></a></g><!--MD5=[b4997ac47864f28c2f74865a473b2911]
+class E2--><a href="psysml:27f8d4b2-11f3-44bc-9d0f-b9a737f91231" target="_top" title="psysml:27f8d4b2-11f3-44bc-9d0f-b9a737f91231" xlink:actuate="onRequest" xlink:href="psysml:27f8d4b2-11f3-44bc-9d0f-b9a737f91231" xlink:show="new" xlink:title="psysml:27f8d4b2-11f3-44bc-9d0f-b9a737f91231" xlink:type="simple"><g id="elem_E2"><rect fill="#FFFFFF" height="48.2656" id="E2" style="stroke:#181818;stroke-width:0.5;" width="70" x="60" y="149"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="68" x="61" y="165.1387">«part  def»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="70" y="180.9639">Vehicle</text><line style="stroke:#181818;stroke-width:0.5;" x1="61" x2="129" y1="189.2656" y2="189.2656"/></g></a><!--MD5=[09b614a08d8cba4a07c9adeb5e0fee81]
+class E3--><a href="psysml:ceb5a51d-5b4b-4856-ac86-0ecbb90149d0" target="_top" title="psysml:ceb5a51d-5b4b-4856-ac86-0ecbb90149d0" xlink:actuate="onRequest" xlink:href="psysml:ceb5a51d-5b4b-4856-ac86-0ecbb90149d0" xlink:show="new" xlink:title="psysml:ceb5a51d-5b4b-4856-ac86-0ecbb90149d0" xlink:type="simple"><g id="elem_E3"><rect fill="#FFFFFF" height="48.2656" id="E3" rx="10" ry="10" style="stroke:#181818;stroke-width:0.5;" width="125" x="32.5" y="41"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="40" x="75" y="57.1387">«part»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="111" x="35.5" y="72.9639">myCar2: Vehicle</text><line style="stroke:#181818;stroke-width:0.5;" x1="33.5" x2="156.5" y1="81.2656" y2="81.2656"/></g></a><!--MD5=[05d275557350bfb9b23a4ef7222b4c39]
+link E3 to E2--><g id="link_E3_E2"><a href="psysml:18dd2d7a-8fd0-42dd-91ef-f369518e29b4" target="_top" title="psysml:18dd2d7a-8fd0-42dd-91ef-f369518e29b4" xlink:actuate="onRequest" xlink:href="psysml:18dd2d7a-8fd0-42dd-91ef-f369518e29b4" xlink:show="new" xlink:title="psysml:18dd2d7a-8fd0-42dd-91ef-f369518e29b4" xlink:type="simple"><path d="M95,89 C95,100.59 95,115.03 95,128.6 " fill="none" id="E3-to-E2" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#FFFFFF" points="95,148.68,88,129.68,102,129.68,95,148.68" style="stroke:#181818;stroke-width:1.0;"/><ellipse cx="90" cy="123.98" fill="#181818" rx="2" ry="2" style="stroke:#181818;stroke-width:1.0;"/><ellipse cx="100" cy="123.98" fill="#181818" rx="2" ry="2" style="stroke:#181818;stroke-width:1.0;"/></a></g><!--MD5=[c7c4b1c382d711af017520769eb03ccb]
+@startuml
+skin sysmlbw
+skinparam monochrome true
+skinparam wrapWidth 300
+hide circle
+
+package "MyPkg2" as E1  [[psysml:ec8fe270-cf80-4851-8284-78143de8c30e ]]  {
+comp def "Vehicle" as E2  <<(T,blue) part  def>> [[psysml:27f8d4b2-11f3-44bc-9d0f-b9a737f91231 ]] {
+}
+comp usage "myCar2: Vehicle  " as E3  <<(T,blue) part>> [[psysml:ceb5a51d-5b4b-4856-ac86-0ecbb90149d0 ]] {
+}
+}
+E3 - -:|> E2 [[psysml:18dd2d7a-8fd0-42dd-91ef-f369518e29b4 ]] 
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 17:01:30 GMT 2022)
+(EPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>
