@@ -824,11 +824,11 @@ package SimpleVehicleModel{
                         port redefines setSpeedPort{
                             event occurrence setSpeedReceived;
                         }
-                        part redefines speedSensor{
-                            port redefines speedSensorPort{
-                                event sendSensedSpeed.source;
-                            }
-                        }
+                        // part redefines speedSensor{
+                        //     port redefines speedSensorPort{
+                        //         event sendSensedSpeed.source;
+                        //     }
+                        // }
                         part redefines vehicleSoftware{
                             part redefines vehicleController{
                                 part redefines cruiseController{
@@ -836,21 +836,21 @@ package SimpleVehicleModel{
                                         //analagous to gate: event occurrence bound but may not need this since the port is bound
                                         event occurrence setSpeedReceived = vehicle_b.setSpeedPort.setSpeedReceived;
                                     }
-                                    port redefines speedSensorPort{
-                                        event occurrence setSpeedReceived=setSpeedPort.setSpeedReceived;
-                                        then event sendSensedSpeed.target;
-                                    }
-                                    port redefines cruiseControlPort{             
-                                        event sendFuelCmd.source;
-                                    }
+                                    // port redefines speedSensorPort{
+                                    //     event occurrence setSpeedReceived=setSpeedPort.setSpeedReceived;
+                                    //     then event sendSensedSpeed.target;
+                                    // }
+                                    // port redefines cruiseControlPort{             
+                                    //     event sendFuelCmd.source;
+                                    // }
                                 }
                             }
                         }
-                        part redefines engine{
-                            port redefines fuelCmdPort{
-                                event sendFuelCmd.target;
-                            }
-                        }
+                        // part redefines engine{
+                        //     port redefines fuelCmdPort{
+                        //         event sendFuelCmd.target;
+                        //     }
+                        // }
                         message sendSensedSpeed of SensedSpeed;
                         message sendFuelCmd of FuelCmd;
                     }
@@ -1543,13 +1543,13 @@ package SimpleVehicleModel{
        package ViewpointDefinitions{
             viewpoint def BehaviorViewpoint;
             viewpoint def SafetyViewpoint{
-                frame concern vs:VehicleSafety;
+                // frame concern vs:VehicleSafety;
             }
             part def SafetyEngineer;
-            concern def VehicleSafety {
-                doc /* identify system safety features */
-                stakeholder se:SafetyEngineer;
-            }
+            // concern def VehicleSafety {
+            //     doc /* identify system safety features */
+            //     stakeholder se:SafetyEngineer;
+            // }
         }
         package ViewDefinitions{
             //public import Views to access rendering method library 
