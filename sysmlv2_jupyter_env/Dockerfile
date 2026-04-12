@@ -24,7 +24,7 @@ RUN wget https://raw.githubusercontent.com/Systems-Modeling/SysML-v2-Release/ref
 RUN chmod +x /mbse/install.sh && \
 bash -x /mbse/install.sh
 
-RUN conda install -y pandas matplotlib pydantic networkx numpy
+RUN conda install -y pandas matplotlib pydantic networkx numpy openai langchain ntlk
  
 EXPOSE 8888
  

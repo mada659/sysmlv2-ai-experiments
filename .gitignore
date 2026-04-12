@@ -12,7 +12,7 @@ wheels/
 .venv
 .claude/
 .env
-*.py
+ai_experiment.py
 
 sysmlv2/
 example_sysml_notebooks/
