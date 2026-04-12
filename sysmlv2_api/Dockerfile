@@ -13,8 +13,8 @@ RUN sbt clean stage
 # This might need to be changed to match architecture?
 FROM eclipse-temurin:11-jre
  
-# Install bash, which is required by the sbt startup script
-RUN apt-get update && apt-get install -y --no-install-recommends bash && rm -rf /var/lib/apt/lists/*
+# Install bash (required by the sbt startup script) and curl (used for healthcheck)
+RUN apt-get update && apt-get install -y --no-install-recommends bash curl && rm -rf /var/lib/apt/lists/*
  
 WORKDIR /app
 # Copy the compiled application from the builder stage

@@ -32,7 +32,17 @@ services:
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       PLAY_SECRET: ${PLAY_SECRET}
-      JAVA_OPTS: "--add-opens java.base/java.lang=ALL-UNNAMED"
+      # preferIPv4Stack=true: prevents Java from resolving 'localhost' as [::1] (IPv6),
+      # which would cause connection refused since Play binds to 0.0.0.0 (IPv4 only).
+      JAVA_OPTS: "--add-opens java.base/java.lang=ALL-UNNAMED -Djava.net.preferIPv4Stack=true"
+    healthcheck:
+      # Play Framework + Hibernate startup is slow (JVM warmup + schema update).
+      # start_period gives it time before failed checks count against retries.
+      test: ["CMD-SHELL", "curl -sf --max-time 5 http://localhost:9000/projects -o /dev/null"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 90s
 
   # Service 3: Jupyter with SysMLv2 Kernel
   jupyter:
@@ -40,6 +50,9 @@ services:
       context: ./sysmlv2_jupyter_env
     container_name: sysmlv2-jupyter
     network_mode: "service:sysml-api"  # Use the same network as the sysml-api service to allow direct communication
+    depends_on:
+      sysml-api:
+        condition: service_healthy
     # ports:
     #   - "8888:8888"
     environment:
